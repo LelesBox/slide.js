@@ -1,3 +1,5 @@
+
+
 // dom加载事件，来源http://www.cnblogs.com/rubylouvre/archive/2009/12/30/1635645.html
 new function() {
 	dom = [];
@@ -46,28 +48,46 @@ new function() {
 }
 // 加载样式
 addCss();
+var obj = [{
+	href: "www.baidu.com",
+	src: "http://ww4.sinaimg.cn/bmiddle/663aa05ajw1esi2l21dhvj20q90b4wg2.jpg"
+}, {
+	href: "www.qq.com",
+	src: "http://ww3.sinaimg.cn/bmiddle/d9e473cfjw1esge8i8x0tj20sg0lc75x.jpg"
+}, {
+	href: "www.163.com",
+	src: "http://ww3.sinaimg.cn/bmiddle/005AWTo8gw1eq9yc8chx6g30dw0dw7wh.gif"
+}]
 dom.Ready(function() {
-	createDOM("test", 4, "", 3, 2);
+	createDOM("test", obj, 5, 2);
 });
 // 创建dom,height:高,width:宽,number:图片数量，orient:方向,interval:滚动间隔,index 第几个flow
-function createDOM(id, count, orient, interval, index) {
+function createDOM(id, obj, interval, index) {
+	var count = obj.length;
 	// 获取容器dom
 	var container = document.getElementById(id);
 
+	var containerHeight = container.clientHeight;
+	var containerWidth = container.clientWidth;
 	// 检测容器是否由高和宽，否则抛错
-	if (!(container.clientHeight && container.clientWidth)) {
+	if (!(containerHeight && containerWidth)) {
 		throw new Error("container should be with explicit height and width (父容器需要明确的高和宽)");
 	}
 
-	container.innerHTML = "<div class='flow'>" + "<a class='flow-banner-btn flow-btn-prev' flow-index='" + index + "'>" + "<i></i>" + "</a>" + "<a class='flow-banner-btn flow-btn-next' flow-index='" + index + "'>" + "<i></i>" + "</a>" + "<ul class='flowlist' flow-index='" + index + "'>" + repeat("<li class='flowlist-card'><img class='flow-img' src='http://ww4.sinaimg.cn/bmiddle/663aa05ajw1esi2l21dhvj20q90b4wg2.jpg'></img></li>", count) + "</ul>" + "<ul class='flow-dots' flow-index='" + index + "'>" + repeat("<li class='flow-dot' flow-index='" + index + "'></li>", count) + "</ul>" + "</div>"
+	container.innerHTML = "<div class='flow'>" + "<a class='flow-banner-btn flow-btn-prev' flow-index='" + index + "'>" + "<i></i>" + "</a>" + "<a class='flow-banner-btn flow-btn-next' flow-index='" + index + "'>" + "<i></i>" + "</a>" + "<ul class='flowlist' flow-index='" + index + "'>" + addimg(index, obj) + "</ul>" + "<ul class='flow-dots' flow-index='" + index + "'>" + repeat("<li class='flow-dot' flow-index='" + index + "'></li>", count) + "</ul>" + "</div>"
 
 	var flowlist = getElementByAttr("flowlist", "flow-index", index);
 
 	flowlist.style.width = count * 100 + "%";
 
-	var a = getElementsByAttr("flow-banner-btn", "flow-index", index);
+	// 设置图片大小
+	var imglist = getElementsByAttr("flow-img", "flow-index", index);
+	each(imglist, function(item) {
+		item.setAttribute("style", "height:" + containerHeight + "px;width:" + containerWidth + "px");
+	})
 
 	// 注册左右a标签onmouseover和onmouseout事件，用于辅助判断是否真正离开区域
+	var a = getElementsByAttr("flow-banner-btn", "flow-index", index);
 	var outbtn = true;
 	each(a, function(item, index, arr) {
 		item.onmouseover = function() {
@@ -104,8 +124,22 @@ function createDOM(id, count, orient, interval, index) {
 
 	var dots = getElementsByAttr("flow-dot", "flow-index", index);
 	var offset = 0;
-	var prev = getElementByAttr("flow-btn-prev", "flow-index", index);
+	// 点击点点点可以跳转到指定位置
+	each(dots, function(item, idx) {
+		item.onclick = function() {
+			flowlist.style.left = (-idx * 100) + "%";
+			offset = -idx;
+			each(dots, function(item, index) {
+				if (index == idx) {
+					item.style.background = "white";
+				} else {
+					item.style.background = "gray";
+				}
+			});
+		}
+	});
 
+	var prev = getElementByAttr("flow-btn-prev", "flow-index", index);
 	var next = getElementByAttr("flow-btn-next", "flow-index", index);
 
 	next.onclick = function() {
@@ -113,9 +147,9 @@ function createDOM(id, count, orient, interval, index) {
 		var index = Math.abs(offset % count);
 		each(dots, function(item, idx) {
 			if (index == idx) {
-				item.style.background = "gray";
-			} else {
 				item.style.background = "white";
+			} else {
+				item.style.background = "gray";
 			}
 		})
 		flowlist.style.left = (-index * 100) + "%";
@@ -125,9 +159,9 @@ function createDOM(id, count, orient, interval, index) {
 		var index = Math.abs(offset % count);
 		each(dots, function(item, idx) {
 			if (index == idx) {
-				item.style.background = "gray";
-			} else {
 				item.style.background = "white";
+			} else {
+				item.style.background = "gray";
 			}
 		})
 		flowlist.style.left = (-index * 100) + "%";
@@ -149,6 +183,15 @@ function each(arr, callback) {
 // repeat create dom innerHTML style
 function repeat(str, count) {
 	return (new Array(count + 1)).join(str);
+}
+
+// 添加图片到li str字符串,index:flow-index,obj:数组对象，对象包含点击跳转链接和图片链接
+function addimg(index, obj) {
+	var strli = "";
+	for (var i = 0; i < obj.length; i++) {
+		strli += "<li class='flowlist-card'><img class='flow-img' href='" + obj[i].href + "' src='" + obj[i].src + "' flow-index='" + index + "'></img></li>";
+	}
+	return strli;
 }
 
 // 根据属性获取dom类数组的值

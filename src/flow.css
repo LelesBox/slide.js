@@ -12,8 +12,6 @@
 	width: 300%;
 	position: relative;
 	left: 0;
-	text-align: center;
-	background-color: yellow;
 	transition: all .3s ease-out;
 }
 .flowlist-card {
@@ -21,26 +19,6 @@
 	padding: 0;
 	list-style: none;
 	float: left
-}
-/*.flowlist-card:first-child {
-	height: 100%;
-	width: 33.333%;
-	background-color: green
-}
-.flowlist-card:nth-child(2) {
-	height: 100%;
-	width: 33.333%;
-	background-color: orange
-}
-.flowlist-card:last-child {
-	height: 100%;
-	width: 33.333%;
-	background-color: blue
-}*/
-
-.flow-img{
-	height: 300px;
-	width: 500px;
 }
 
 .flow-banner-btn {
@@ -93,9 +71,9 @@
 	float: left;
 	border-radius: 4px;
 	cursor: pointer;
-	background: white;
-	opacity: 0.8
+	background: gray;
+	opacity: 0.8;
 }
 .flow-dot:first-child {
-	background: gray
+	background: white;
 }
