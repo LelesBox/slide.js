@@ -12,7 +12,7 @@ gulp.task('default', function() {
 		.pipe(sourcemaps.init())
 		.pipe(autoprefixer())
 		.pipe(minifycss())
-		.pipe(concat('flow.min.css'))
+		.pipe(concat('slide.min.css'))
 		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest('dist'));
 		

@@ -1,27 +1,28 @@
-.flow{
+.slide{
+    margin: 0;
+    padding: 0;
 	height:100%;
 	width:100%;
 	overflow: hidden;
 	position:relative
 }
-.flowlist {
+.slidelist {
 	margin: 0;
 	padding: 0;
 	height: 100%;
 	/*动态*/
-	width: 300%;
 	position: relative;
 	left: 0;
 	transition: all .3s ease-out;
 }
-.flowlist-card {
+.slidelist-card {
 	margin: 0;
 	padding: 0;
 	list-style: none;
-	float: left
+	float: left;
 }
 
-.flow-banner-btn {
+.slide-banner-btn {
 	display: inline-block;
 	position: absolute;
 	z-index: 999;
@@ -34,20 +35,20 @@
 	opacity: 0;
 	transition: all .5s ease-out;
 }
-.flow-btn-prev {
+.slide-btn-prev {
 	left: 10px
 }
-.flow-btn-next {
+.slide-btn-next {
 	right: 10px
 }
-.flow-btn-prev i {
+.slide-btn-prev i {
 	display: block;
 	height: 30px;
 	width: 30px;
 	margin-top: 10px;
 	background: url("./iconfont-chevron15.png") no-repeat
 }
-.flow-btn-next i {
+.slide-btn-next i {
 	display: block;
 	height: 30px;
 	width: 30px;
@@ -55,7 +56,7 @@
 	background: url("./iconfont-chevron15.png") no-repeat;
 	transform: rotate(180deg)
 }
-.flow-dots {
+.slide-dots {
 	margin: 0;
 	padding: 0;
 	display: inline-block;
@@ -63,7 +64,7 @@
 	bottom: 20px;
 	left: 50%
 }
-.flow-dot {
+.slide-dot {
 	list-style: none;
 	height: 8px;
 	width: 8px;
@@ -74,6 +75,6 @@
 	background: gray;
 	opacity: 0.8;
 }
-.flow-dot:first-child {
+.slide-dot:first-child {
 	background: white;
 }

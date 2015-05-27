@@ -3,32 +3,26 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Document</title>
-		<script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
-		<script type="text/javascript" src="./src/flow.js"></script>
-		<!-- <link rel="stylesheet" type="text/css" href="./src/flow.css"> -->
+		<script type="text/javascript" src="./src/slide.js"></script>
+		<script>
+		var obj = [{
+		href: "www.baidu.com",
+		src: "http://ww4.sinaimg.cn/bmiddle/663aa05ajw1esi2l21dhvj20q90b4wg2.jpg"
+		}, {
+		href: "www.qq.com",
+		src: "http://ww3.sinaimg.cn/bmiddle/d9e473cfjw1esge8i8x0tj20sg0lc75x.jpg"
+		}, {
+		href: "www.163.com",
+		src: "http://ww3.sinaimg.cn/bmiddle/005AWTo8gw1eq9yc8chx6g30dw0dw7wh.gif"
+		}];
+		slide.createSlide("test", obj, 5);
+		slide.createSlide("test2", obj, 3);
+		</script>
+		<!-- <link rel="stylesheet" type="text/css" href="./src/slide.css"> -->
 	</head>
 	<body>
-		<div style="height:200px;width:600px;">
-			<div class="flow">
-				<a class="flow-banner-btn flow-btn-prev" flow-index="1">
-					<i></i>
-				</a>
-				<a class="flow-banner-btn flow-btn-next" flow-index="1">
-					<i></i>
-				</a>
-				<ul class="flowlist" flow-index="1">
-					<li class="flowlist-card"></li>
-					<li class="flowlist-card"></li>
-					<li class="flowlist-card"></li>
-				</ul>
-				<ul class="flow-dots" flow-index="1">
-					<li class="flow-dot" flow-index="1"></li>
-					<li class="flow-dot" flow-index="1"></li>
-					<li class="flow-dot" flow-index="1"></li>
-				</ul>
-			</div>
-		</div>
-		<div id="test" style="height:300px;width:300px;">
-			<script type="text/javascript" src="src/flow.test.js"></script>
-		</body>
-	</html>
+		<div id="test" style="height:300px;width:300px;"></div>
+		<div id="test2" style="height:300px;width:500px;"></div>
+		<script type="text/javascript" src="src/slide.test.js"></script>
+	</body>
+</html>
