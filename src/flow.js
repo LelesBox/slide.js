@@ -3,26 +3,36 @@ $(document).ready(function() {
 	var a = document.getElementsByClassName("banner-btn");
 
 	// 注册左右a标签onmouseover和onmouseout事件，用于辅助判断是否真正离开区域
-	var out=true;
+	var outbtn = true;
 	each(a, function(item, index, arr) {
-		item.onmouseover=function(){
-			out=true;
+		item.onmouseover = function() {
+			outbtn = false;
+			console.log('a in');
 		}
-		item.onmouseout=function(){
-			out=false;
+		item.onmouseout = function() {
+			outbtn = true;
+			console.log("a out");
 		}
 	});
+	var outli = true;
 	flowlist.onmouseover = function() {
+		outli = false;
+		console.log('li in');
 		// 如果
-		if()
-		each(a, function(item, index, arr) {
-			item.style.display = "inline-block";
-		});
+		if (!outbtn||!outli)
+			each(a, function(item, index, arr) {
+				// item.style.display = "inline-block";
+				item.style.opacity = "0.3";
+			});
 	}
 	flowlist.onmouseout = function() {
-		each(a, function(item, index, arr) {
-			item.style.display = "none";
-		});
+		outli = true;
+		console.log('li out');
+		if (outbtn)
+			each(a, function(item, index, arr) {
+				// item.style.display = "none";
+				item.style.opacity = "0";
+			});
 	}
 	var prev = document.getElementsByClassName("btn-prev")[0];
 	var offset = 0;
