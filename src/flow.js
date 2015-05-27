@@ -7,32 +7,29 @@ $(document).ready(function() {
 	each(a, function(item, index, arr) {
 		item.onmouseover = function() {
 			outbtn = false;
-			console.log('a in');
+			if (outli) {
+				each(a, function(item, index, arr) {
+					item.style.opacity = "0.3";
+				})
+			}
 		}
 		item.onmouseout = function() {
 			outbtn = true;
-			console.log("a out");
 		}
 	});
 	var outli = true;
 	flowlist.onmouseover = function() {
 		outli = false;
-		console.log('li in');
-		// 如果
-		if (!outbtn||!outli)
-			each(a, function(item, index, arr) {
-				// item.style.display = "inline-block";
-				item.style.opacity = "0.3";
-			});
+		each(a, function(item, index, arr) {
+			item.style.opacity = "0.3";
+		});
 	}
 	flowlist.onmouseout = function() {
 		outli = true;
-		console.log('li out');
 		if (outbtn)
 			each(a, function(item, index, arr) {
-				// item.style.display = "none";
 				item.style.opacity = "0";
-			});
+			})
 	}
 	var prev = document.getElementsByClassName("btn-prev")[0];
 	var offset = 0;
