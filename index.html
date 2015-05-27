@@ -1,106 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
-	<style type="text/css">
-	#flowlist{
-		margin:0;
-		padding:0;
-		height: 100%;
-		width:300%;
-		position: relative;
-		left:0;
-		background-color: yellow;
-		transition: all .5s ease-out;
-       -moz-transition: all .5s ease-out; /* Firefox 4 */
-       -webkit-transition: all .5s ease-out; /* Safari 和 Chrome */
-       -o-transition: all .5s ease-out; /* Opera */
-	}
-	#flowlist:hover{
-		/*left:-100%;*/
-	}
-	.card{
-		margin:0;
-		padding:0;
-		list-style: none;
-		float: left;
-	}
-	.card:first-child{
-		height: 100%;
-		width: 33.333%;
-		background-color: green;
-	}
-	.card:nth-child(2){
-		height: 100%;
-		width: 33.333%;
-		background-color: orange;
-	}
-	.card:last-child{
-	    height: 100%;
-		width: 33.333%;
-		background-color: blue;
-	}
-	.banner-btn{
-		display: inline-block;
-		/*display: none;*/
-		position: absolute;
-		z-index: 999;
-		top:50%;
-		margin-top:-25px;
-		height: 50px;
-		width:30px;
-		cursor: pointer;
-		background-color: black;
-		opacity: 0;
-		transition: all .5s ease-out;
-       -moz-transition: all .5s ease-out; /* Firefox 4 */
-       -webkit-transition: all .5s ease-out; /* Safari 和 Chrome */
-       -o-transition: all .5s ease-out; /* Opera */
-	}
-	.btn-prev{
-		left:10px;
-	}
-	.btn-next{
-		right: 10px;
-	}
-	.btn-prev i{
-		display: block;
-		height: 30px;
-		width:30px;
-		margin-top:10px;
-		background: url("./src/iconfont-chevron15.png") no-repeat;
-	}
-	.btn-next i{
-		display: block;
-		height: 30px;
-		width:30px;
-		margin-top:10px;
-		background: url("./src/iconfont-chevron15.png") no-repeat;
-		transform:rotate(180deg);
-	}
-
-	</style>
-	<script type="text/javascript" src="src/flow.js"></script>
-</head>
-<body>
-	<div id="flow" style="height:300px;width:500px;background-color:red;overflow: hidden;position:relative">
-	<a class="banner-btn btn-prev">
-	<i></i>
-	</a>
-	<a class="banner-btn btn-next">
-		<i></i>
-	</a>
-	<ul id="flowlist">
-		<li class="card"></li>
-		<li class="card"></li>
-		<li class="card"></li>
-	</ul>
-	</div>
-	<div id="flows" style="height:300px;width:500px;background-color:red;overflow: hidden">
-</body>
-<script type="text/javascript">
-	// js事件，点击左边，点击右边，动画移动
-</script>
-</html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script type="text/javascript" src="./src/flow.js"></script>
+		<!-- <link rel="stylesheet" type="text/css" href="./src/flow.css"> -->
+	</head>
+	<body>
+		<div style="height:200px;width:600px;">
+			<div class="flow">
+				<a class="flow-banner-btn flow-btn-prev" flow-index="1">
+					<i></i>
+				</a>
+				<a class="flow-banner-btn flow-btn-next" flow-index="1">
+					<i></i>
+				</a>
+				<ul class="flowlist" flow-index="1">
+					<li class="flowlist-card"></li>
+					<li class="flowlist-card"></li>
+					<li class="flowlist-card"></li>
+				</ul>
+				<ul class="flow-dots" flow-index="1">
+					<li class="flow-dot" flow-index="1"></li>
+					<li class="flow-dot" flow-index="1"></li>
+					<li class="flow-dot" flow-index="1"></li>
+				</ul>
+			</div>
+		</div>
+		<div id="test" style="height:300px;width:500px;">
+			<script type="text/javascript" src="src/flow.test.js"></script>
+		</body>
+	</html>

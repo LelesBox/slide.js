@@ -1,1 +1,101 @@
-flow.css
+.flow{
+	height:100%;
+	width:100%;
+	overflow: hidden;
+	position:relative
+}
+.flowlist {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	/*动态*/
+	width: 300%;
+	position: relative;
+	left: 0;
+	text-align: center;
+	background-color: yellow;
+	transition: all .3s ease-out;
+}
+.flowlist-card {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	float: left
+}
+/*.flowlist-card:first-child {
+	height: 100%;
+	width: 33.333%;
+	background-color: green
+}
+.flowlist-card:nth-child(2) {
+	height: 100%;
+	width: 33.333%;
+	background-color: orange
+}
+.flowlist-card:last-child {
+	height: 100%;
+	width: 33.333%;
+	background-color: blue
+}*/
+
+.flow-img{
+	height: 300px;
+	width: 500px;
+}
+
+.flow-banner-btn {
+	display: inline-block;
+	position: absolute;
+	z-index: 999;
+	top: 50%;
+	margin-top: -25px;
+	height: 50px;
+	width: 30px;
+	cursor: pointer;
+	background-color: black;
+	opacity: 0;
+	transition: all .5s ease-out;
+}
+.flow-btn-prev {
+	left: 10px
+}
+.flow-btn-next {
+	right: 10px
+}
+.flow-btn-prev i {
+	display: block;
+	height: 30px;
+	width: 30px;
+	margin-top: 10px;
+	background: url("./iconfont-chevron15.png") no-repeat
+}
+.flow-btn-next i {
+	display: block;
+	height: 30px;
+	width: 30px;
+	margin-top: 10px;
+	background: url("./iconfont-chevron15.png") no-repeat;
+	transform: rotate(180deg)
+}
+.flow-dots {
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+	position: absolute;
+	bottom: 20px;
+	left: 50%
+}
+.flow-dot {
+	list-style: none;
+	height: 8px;
+	width: 8px;
+	margin: 0 5px;
+	float: left;
+	border-radius: 4px;
+	cursor: pointer;
+	background: white;
+	opacity: 0.8
+}
+.flow-dot:first-child {
+	background: gray
+}
