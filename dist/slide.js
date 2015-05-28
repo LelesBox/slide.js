@@ -48,7 +48,7 @@
     // 加载样式
     addCss();
 
-    // 提供两个方法，一个是domready，一个是slide();
+    // 提供两个方法，一个是dom，一个是createSlide();
     var slide = {};
     slide["dom"] = dom;
     slide["createSlide"] = newSlide;
@@ -71,7 +71,7 @@
         }
     }
 
-    // 创建dom,height:高,width:宽,number:图片数量，orient:方向,interval:滚动间隔,index 第几个slide
+    // 元素ID,obj参数，滚动时间间隔
     function createDOM(id, obj, interval, index) {
         var count = obj.length;
         // 获取容器dom
@@ -79,7 +79,7 @@
 
         var containerHeight = container.clientHeight;
         var containerWidth = container.clientWidth;
-        // 检测容器是否由高和宽，否则抛错
+        // 检测容器是否有高和宽，否则抛错
         if (!(containerHeight && containerWidth)) {
             throw new Error("container of " + id + " should be with explicit height and width (父容器需要明确的高和宽)");
         }
