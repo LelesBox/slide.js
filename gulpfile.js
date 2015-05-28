@@ -7,19 +7,37 @@ var gulp = require("gulp"),
 	minifycss = require("gulp-minify-css");
 
 
-gulp.task('default', function() {
+gulp.task('minifycss', function() {
 	return gulp.src('src/**/*.css')
-		.pipe(sourcemaps.init())
 		.pipe(autoprefixer())
+		.pipe(concat('slide.css'))
+		.pipe(gulp.dest('dist'))
+		.pipe(rename({
+			suffix: '.min'
+		}))
+		// .pipe(sourcemaps.init())
 		.pipe(minifycss())
-		.pipe(concat('slide.min.css'))
-		.pipe(sourcemaps.write('.'))
+		// .pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest('dist'));
-		
+
 });
 
-gulp.task('minifycss', function() {
-	return gulp.src('src/*.css') //压缩的文件
-		.pipe(gulp.dest('minified/css')) //输出文件夹
-		.pipe(minifycss()); //执行压缩
+gulp.task('minifyjs', function() {
+	return gulp.src('src/*.js')
+		.pipe(concat('slide.js'))
+		.pipe(gulp.dest('dist'))
+		.pipe(rename({
+			suffix: '.min'
+		}))
+		.pipe(uglify())
+		.pipe(gulp.dest('dist'));
+});
+
+gulp.task('default', function() {
+	gulp.start('minifycss', 'minifyjs');
+});
+
+gulp.task('watch', function() {
+	gulp.watch('src/*.js', ['minifyjs']);
+	gulp.watch('src/*.css', ['minifycss']);
 });
