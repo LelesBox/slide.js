@@ -2,6 +2,7 @@
 
 该js不依赖任何类库
 目前只支持IE8+,在IE9下没有动画效果
+
 1. 需要一个富容器，最好是div(因为只测试了div)，要有明确的长宽，哪怕是百分比也行
 
 #方法
@@ -15,7 +16,7 @@ slide.dom.Ready(function(){
 })
 ```
 
-###slide.createSlide(elementID,object,interval,isDomReady)
+###slide.createSlide(elementID,object,[interval,isDomReady])
 用于创建一个slide，其中参数：
 'elementID' 表示父容器的id值；
 'object'是数组参数，单个结构如下：
