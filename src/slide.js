@@ -48,7 +48,7 @@
     // 加载样式
     addCss();
 
-    // 提供两个方法，一个是domready，一个是slide();
+    // 提供两个方法，一个是dom，一个是createSlide();
     var slide = {};
     slide["dom"] = dom;
     slide["createSlide"] = newSlide;
@@ -76,13 +76,14 @@
     // isNewTag:点击图片是否打开新页面
     // interval:滚动间隔,infinite:是否无缝滚动，index 第几个slide
     function createDOM(id, obj, isnewtag, interval, infinite, index) {
+
         var count = obj.length;
         // 获取容器dom
         var container = document.getElementById(id);
 
         var containerHeight = container.clientHeight;
         var containerWidth = container.clientWidth;
-        // 检测容器是否由高和宽，否则抛错
+        // 检测容器是否有高和宽，否则抛错
         if (!(containerHeight && containerWidth)) {
             throw new Error("container of " + id + " should be with explicit height and width (父容器需要明确的高和宽)");
         }
@@ -113,7 +114,7 @@
             event = EventUtil.getEvent(event);
             var target = EventUtil.getTarget(event);
             var imghref = target.getAttribute("href");
-            if (imghref!=='undefined') {
+            if (imghref !== 'undefined') {
                 console.log(imghref);
                 if (!startWith(imghref, "http")) {
                     imghref = "http://" + imghref;
@@ -257,7 +258,7 @@
             }
             // autoroll();
         }
-        //        autoroll();
+        autoroll();
         // 自动滚动
         var cleartimer;
 
