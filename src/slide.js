@@ -113,13 +113,16 @@
             event = EventUtil.getEvent(event);
             var target = EventUtil.getTarget(event);
             var imghref = target.getAttribute("href");
-            if (!startWith(imghref, "http")) {
-                imghref = "http://" + imghref;
-            }
-            if (isnewtag) {
-                window.open(imghref);
-            } else {
-                window.open(imghref, "_self");
+            if (imghref!=='undefined') {
+                console.log(imghref);
+                if (!startWith(imghref, "http")) {
+                    imghref = "http://" + imghref;
+                }
+                if (isnewtag) {
+                    window.open(imghref);
+                } else {
+                    window.open(imghref, "_self");
+                }
             }
         });
 
