@@ -4,6 +4,7 @@
 	height:100%;
 	width:100%;
 	overflow: hidden;
+	cursor: pointer;
 	position:relative
 }
 .slidelist {
@@ -32,8 +33,14 @@
 	cursor: pointer;
 	background-color: black;
 	opacity: 0;
+	user-select:none;
 	transition: all .5s ease-out;
 }
+
+.slide-banner-btn:hover{
+	opacity: 1;
+}
+
 .slide-btn-prev {
 	left: 10px
 }

@@ -10,7 +10,7 @@ var gulp = require("gulp"),
 gulp.task('minifycss', function() {
 	return gulp.src('src/**/*.css')
 		.pipe(autoprefixer())
-		.pipe(concat('slide.css'))
+		// .pipe(concat('slide.css'))
 		.pipe(gulp.dest('dist'))
 		.pipe(rename({
 			suffix: '.min'
@@ -24,7 +24,7 @@ gulp.task('minifycss', function() {
 
 gulp.task('minifyjs', function() {
 	return gulp.src('src/*.js')
-		.pipe(concat('slide.js'))
+		// .pipe(concat('slide.js'))
 		.pipe(gulp.dest('dist'))
 		.pipe(rename({
 			suffix: '.min'
@@ -41,3 +41,7 @@ gulp.task('watch', function() {
 	gulp.watch('src/*.js', ['minifyjs']);
 	gulp.watch('src/*.css', ['minifycss']);
 });
+
+gulp.task("watchcss",function(){
+	gulp.watch('src/*.css', ['minifycss']);
+})
