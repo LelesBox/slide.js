@@ -20,7 +20,7 @@ slide.dom.Ready(function(){
 ###slide.createSlide(obj)
 ```
 obj={
-   id:"父元素id(必选),
+   id:"父元素id(必选)",
    params:"图片参数,具体属性看下面params(必选)",
    isNewtag:"点击图片打开连接是否新窗口打开,默认false当前窗口打开(非必选)",
    interval:"图片滚动间,默认为3s(非必选)",
