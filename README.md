@@ -1,5 +1,8 @@
 #slide.js
 
+###效果
+![git](https://coding.net/u/shorly/p/Slide.js/git/blob/master/slide.gif)
+
 该js不依赖任何类库
 因为使用了css3的动画属性,目前只支持IE8+,在IE9下没有css动画效果,所以推荐使用无缝滚动的js动画方案
 
@@ -38,3 +41,6 @@ params={
 
 ###例子
 打开index.html即可
+
+
+
